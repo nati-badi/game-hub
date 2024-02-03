@@ -4,13 +4,14 @@ import getCroppedImageUrl from "../services/getCroppedImageUrl";
 import SideListSkeleton from "./SideListSkeleton";
 
 interface Props {
-  onSelectGenre: (genre: Genres) => void
+  onSelectGenre: (genre: Genres) => void;
+  selectedGenre: Genres | null;
 }
 
-function GenresList({ onSelectGenre }: Props) {
+function GenresList({ selectedGenre, onSelectGenre }: Props) {
   const { data, error, isLoading } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  if(error) return null;
+  if (error) return null;
 
   return (
     <List>
@@ -24,7 +25,14 @@ function GenresList({ onSelectGenre }: Props) {
               borderRadius={8}
               src={getCroppedImageUrl(genre.image_background)}
             />
-            <Button onClick={() => onSelectGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
+            <Button
+              fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+              onClick={() => onSelectGenre(genre)}
+              fontSize="lg"
+              variant="link"
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}
