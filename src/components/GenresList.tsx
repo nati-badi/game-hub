@@ -1,6 +1,6 @@
 import { Image, List, ListItem, Text, HStack, Button } from "@chakra-ui/react";
 import useGenres, { Genres } from "../hooks/useGenres";
-import getCroppedImageUrl from "../services/getCroppedImageUrl";
+import getCroppedImageUrl from "../services/imageUrl";
 import SideListSkeleton from "./SideListSkeleton";
 
 interface Props {
@@ -26,7 +26,7 @@ function GenresList({ selectedGenre, onSelectGenre }: Props) {
               src={getCroppedImageUrl(genre.image_background)}
             />
             <Button
-              fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               onClick={() => onSelectGenre(genre)}
               fontSize="lg"
               variant="link"
