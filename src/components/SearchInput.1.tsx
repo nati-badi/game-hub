@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 
 export function SearchInput() {
   return (
-    <Form>
+    <form>
       <InputGroup>
         <InputLeftElement children={<BsSearch />} />
         <Input
@@ -12,6 +12,6 @@ export function SearchInput() {
           variant="filled"
         />
       </InputGroup>
-    </Form>
+    </form>
   );
 }
